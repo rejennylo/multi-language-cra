@@ -1,6 +1,5 @@
-// src/App.js
 import React from 'react';
-import { useTranslation } from 'react-i18next';
+import { I18nextProvider, useTranslation } from 'react-i18next';
 
 function App() {
   const { t, i18n } = useTranslation();
@@ -10,14 +9,15 @@ function App() {
   };
 
   return (
-    <div>
+    <I18nextProvider i18n={i18n}>
       <select onChange={changeLanguage} defaultValue={i18n.language}>
         <option value="en">English</option>
-        <option value="tw">中文</option>
+        <option value="zh-TW">繁體中文</option>
+        <option value="zh-CN">简体中文</option>
       </select>
       <h1>{t('welcome')}</h1>
       <p>{t('description')}</p>
-    </div>
+    </I18nextProvider>
   );
 }
 
